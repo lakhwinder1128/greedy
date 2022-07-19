@@ -1,0 +1,19 @@
+ int activitySelection(vector<int> start, vector<int> end, int n)
+    {
+        vector<pair<int,int>>v;
+       int count=1;
+       
+       for(int i=0;i<n;i++){
+          v.push_back({end[i],start[i]});
+       }
+       
+         sort(v.begin(),v.end());
+         int last=v[0].first;
+       for(int i=1;i<n;i++){
+           if(v[i].second>last){
+               last=v[i].first;
+               count++;
+           }
+       }
+       return count;
+    }
