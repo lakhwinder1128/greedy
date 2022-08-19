@@ -1,0 +1,44 @@
+// approach : add all  ele into mp with frequency , traverse the array , if mp[arr[i]]>0 then check  if it is required by any other subsequence which has already formed
+if it is required then reduce its freq from nextreq and do consecutive interger++  in nextreq , if it is not required by earlier subsequences formed then check for 
+for next 2 consecutive elements in mp if they exist form new subsequence (x,x+1,x+2) and do nextreq[x+3]++ because we require x+3
+to increase this subsequence , now if in future x+3 is found then we can satisfy the need of this subsequence..
+
+
+bool isPossible(vector<int>& nums) { 
+        
+        unordered_map<int,int>mp,nextreq;
+        for(int x:nums){
+            mp[x]++;
+        }
+        for(int x:nums){
+            if(mp.find(x)==mp.end())continue;
+             if(nextreq[x]>0){
+                        mp[x]--;
+                        if(mp[x]==0)mp.erase(x);
+                        //nextreq.erase(x);
+                          nextreq[x]--;
+                        nextreq[x+1]++;
+                    }
+            
+           else if(mp.find(x)!=mp.end()&&mp.find(x+1)!=mp.end()&&mp.find(x+2)!=mp.end()){
+                nextreq[x+3]++;
+                mp[x]--;
+                mp[x+1]--;
+                mp[x+2]--;
+                if(mp[x]==0)mp.erase(x);
+                if(mp[x+1]==0)mp.erase(x+1);
+                if(mp[x+2]==0)mp.erase(x+2);
+               // count++;
+            }
+           else return false;
+           
+        }
+        
+        
+        // try this testcase    [1,2,3,4,5,5,6,7]
+ 
+//         1 2 3 3 4  5 6 7
+
+            
+            return true;
+    }
