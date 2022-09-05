@@ -1,0 +1,40 @@
+//sort in deacreasing order of profit 
+
+vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        // your code here
+        vector<pair<int,pair<int,int>>>v;
+        int mxdeadline=0;
+        for(int i=0;i<n;i++){
+            mxdeadline=max(mxdeadline,arr[i].dead);
+            v.push_back({arr[i].profit,{arr[i].dead,arr[i].id}});
+        }
+        
+        //sort(v.begin(),v.end());
+        sort(v.begin(),v.end());
+       
+          int count=0;
+        int  res=0;
+        vector<int>temp(mxdeadline+1,-1);
+        for(int i=n-1;i>=0;i--){
+            
+            int ind=v[i].second.first;
+            while(ind--){
+                if(temp[ind]==-1){
+                    temp[ind]=v[i].first;
+                    res+=temp[ind];
+                    count++;
+                    break;
+                }
+                
+            }
+            
+            
+        }
+      
+        
+        vector<int>ans;
+        ans.push_back(count);
+        ans.push_back(res);
+        return ans;
+    } 
