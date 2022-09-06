@@ -1,0 +1,33 @@
+ int minJumps(int arr[], int n){
+       
+        
+        int mx=INT_MIN;
+        int  till=0;
+        int count=0;
+        int index=0;
+        for(int i=0;i<n-1;){
+           int range=arr[i]+i;   //range=how far can we reach jumping from this index
+           mx=-1;
+           if(range>=n-1){               // if we can reach n-1 index then stop 
+               count++;
+               break;
+           }
+           for(int j=i+1;j<=range&&j<n;j++){  // we should jump on which index from i+1 to range 
+               if(mx<arr[j]+j){              //  so jump on index whose range is max 
+                   mx=arr[j]+j;
+                   index=j;
+               }
+           }
+             i=index;                         // make a jump
+             if(arr[i]==0)return -1;          // if all elements are 0 in that range it is not possible to jump
+            // cout<<"index= "<<i<<endl;
+             count++;
+             
+            }
+           
+            
+        
+        return count;
+        
+        
+    }
