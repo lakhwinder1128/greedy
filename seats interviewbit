@@ -1,0 +1,41 @@
+int Solution::seats(string a) {
+    int mod=10000003;
+    int count=0;
+    int n=a.size();
+    for(int i=0;i<n;i++){
+        if(a[i]=='x')count++;
+    }
+    int mid=0;
+    int t=0;
+    int ind=0;
+    for(int i=0;i<n;i++){
+       if(a[i]=='x')t++;
+       if(t==(count+1)/2){
+           ind=i;
+           break;
+       }    
+    }
+    mid=ind;
+   // cout<<count<<" "<<ind<<" ";
+    long long int jumps=0;
+    int dest=mid-1;
+    for(int i=mid-1;i>=0;i--){
+        if(a[i]=='x'){
+            jumps+=dest-i;
+            jumps=jumps%mod;
+            dest--;
+           //  cout<<"hello";
+        }
+    }
+    // cout<<jumps<<" ";
+    dest=mid+1;
+    for(int i=mid+1;i<n;i++){
+        if(a[i]=='x'){
+            jumps+=i-dest;
+            jumps=jumps%mod;
+            dest++;
+        }   
+    }
+   // cout<<jumps<<endl;
+    return jumps%mod;
+}
