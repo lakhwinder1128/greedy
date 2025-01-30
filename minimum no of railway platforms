@@ -1,4 +1,21 @@
- // sort arrays individually doesnt matter which train comes earlier or later.
+//Just for Explanation:
+// consider a plain containing points ( starting or ending) 
+// each point may be starting or ending
+// traverse from i=0 to i=n-1 
+// if you find a starting point PlatformCount++, else PlatformCount-- , keep track of max PlatformCount reached
+// simple approach with O(n) space:
+// vector<pair<int,char>>v ; 
+// {3,'s'} , {5,'s'},{7,'e'},{10,'e'}; //sorted
+//                  s-----------------------e
+//           s----------------------e   s------------e
+//  s---------------------e
+// now see we only check which point comes earlier , start or end , if start do count++, else do count--;
+// so sort each array ( arr, dep) individually , make 2 pointer ai, di for each array and compare arr[ai] with dep[di], see which is smaller
+// if arr[ai] is smaller do count++ else do count--, keep track of maximum count achieved.
+
+
+
+// sort arrays individually doesnt matter which train comes earlier or later.
  
  //Function to find the minimum number of platforms required at the
     //railway station such that no train waits.
