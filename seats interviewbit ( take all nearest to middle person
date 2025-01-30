@@ -1,3 +1,8 @@
+// The sum of absolute differences, Σ |xi - p|, is minimized when p is the median of x1, x2, ..., xK.
+// so bring them closer to median
+// if there are 4 person : bring closer to any of 2nd or 3rd
+// if 7 person bring closer to 4th person
+
 int Solution::seats(string a) {
     int mod=10000003;
     int count=0;
