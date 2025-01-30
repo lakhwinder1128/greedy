@@ -1,4 +1,6 @@
- int activitySelection(vector<int> start, vector<int> end, int n)
+//sort according to ending point because you want to select those activities which completes as early as possible so that you can take next activity
+
+int activitySelection(vector<int> start, vector<int> end, int n)
     {
         vector<pair<int,int>>v;
        int count=1;
