@@ -1,6 +1,18 @@
 // sort according to ending index of balloons
 
 
+// 1) sort the array acc to ending point. why?
+// if we sort according to starting point then in these cases:
+// (1,10), (3,5),(6,9)
+//  we shot at the ending point of each balloon if that balloon is not bursted already
+// why?  jab overlap hota hai to pehle wale balloon ka ending point overlap
+//  karega hi karega, lekin starting point jaroori nhi hai,
+//  to ending se shot krne par overlaping saare balloon burst ho jayenge , it is sure
+// proof,: consider (3,7)(1,10) , a
+// ab agar koi bole ki 10 par shoot karne se (3,7) miss ho jayega 
+// nhi hoga because uska ending point pehle hai , pehle use burst karenge
+// as we have sorted acc to ending point.
+
   bool cmp(vector<int>&a,vector<int>&b){
                   return a[1]<b[1];
                     }
