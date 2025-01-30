@@ -1,4 +1,7 @@
 //sort in deacreasing order of profit 
+// make an array v of size  max(deadline)+1, 
+// put each job ID as you go in v array 
+// try to complete each job as late as possible 
 
 vector<int> JobScheduling(Job arr[], int n) 
     { 
